@@ -12,7 +12,7 @@ movies = [
     },
     {
         "id": 2,
-        "nombre": "mugen train",
+        "nombre": "Juan pieza",
         "Animador": "Funemi animation"
     }
 ]
@@ -31,4 +31,11 @@ def get_movie(id: int):
     for each_movie in movies:
         if each_movie["id"] == id:
             return each_movie["nombre"]
+    return []
+
+@app.get('/movies/', tags=['movies'])
+def get_movies_by_categoriy(animator: str, id:int):
+    for movie in movies:
+        if movie["Animador"] == animator and movie["id"] == id:
+            return movie["nombre"]
     return []
